@@ -2,15 +2,12 @@
 {
     public class Reader
     {
+        private const int pointerDownUnicode = 8595;
         private string? pathToFile;
 
         public string? tapeData;
-
         public List<string?> behaviourData = new List<string?>();
-
         public int pointerPlace = 0;
-
-
 
         public List<string> ReadTheHelpDocument(string pathToFile)
         {
@@ -24,9 +21,8 @@
             }
 
             return lines;
-          
-        }
 
+        }
 
         public void ReadTheTape(string pathToFile)
         {
@@ -39,12 +35,13 @@
             catch
             {
                 Console.WriteLine("No File!");
+                Console.WriteLine("You're in" + Directory.GetCurrentDirectory());
                 return;
             }
 
             if (streamReader.Peek() > -1)
             {
-                while (streamReader.Peek() != 8595)
+                while (streamReader.Peek() != pointerDownUnicode)
                 {
                     streamReader.Read();
                     pointerPlace++;
@@ -57,13 +54,8 @@
                 {
                     behaviourData.Add(streamReader.ReadLine());
                 }
-
             }
-
             streamReader.Close();
         }
-
-
-
     }
 }

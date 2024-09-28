@@ -19,7 +19,7 @@ namespace Post_Turing_Machine_Testing
 
             Reader reader = new Reader();
 
-            reader.ReadTheTape("D:\\Документы\\Всякие университетские файлы\\ППОИС лабы\\Post-Turing Machine\\TestState.txt");
+            reader.ReadTheTape("TestState.txt");
 
             interpreter = new Interpreter();
 
@@ -103,9 +103,9 @@ namespace Post_Turing_Machine_Testing
             List<bool> tapeCopy = machine.tape;
 
 
-            writer.WriteTheTape("D:\\Документы\\Всякие университетские файлы\\ППОИС лабы\\Post-Turing Machine\\TestState.txt", interpreter.UnInterpretTheTape(machine.tape), machine.currentPosition, interpreter.UnInterpretTheBehaviour(machine.behaviour));
+            writer.WriteTheTape("TestState.txt", interpreter.UnInterpretTheTape(machine.tape), machine.currentPosition, interpreter.UnInterpretTheBehaviour(machine.behaviour));
 
-            reader.ReadTheTape("D:\\Документы\\Всякие университетские файлы\\ППОИС лабы\\Post-Turing Machine\\TestState.txt");
+            reader.ReadTheTape("TestState.txt");
 
             Assert.AreEqual(tapeCopy, machine.tape);
         }

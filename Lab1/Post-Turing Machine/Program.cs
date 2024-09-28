@@ -4,11 +4,10 @@
     {
         public static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             Reader reader = new Reader();
 
-            reader.ReadTheTape("file.txt");
+            reader.ReadTheTape(Console.ReadLine());
 
             Interpreter interpreter = new Interpreter();
 

@@ -1,6 +1,5 @@
 ﻿namespace PostMachineNS
 {
-
     public class Editor
     {
         Post_Machine machine;
@@ -22,7 +21,6 @@
             {
                 return;
             }
-
             machine.FixTheSequence();
         }
 
@@ -30,7 +28,7 @@
         {
             List<string[]> tapeCopy;
             tapeCopy = machine.behaviour;
-            for(int i = 0; i< tapeCopy.Count; i++)
+            for (int i = 0; i < tapeCopy.Count; i++)
             {
                 if (Convert.ToInt32(tapeCopy[i][0]) == stringIndex)
                 {
@@ -52,7 +50,6 @@
                     return;
                 }
             }
-
             tapeCopy.Add(rule);
             machine.FixTheSequence();
         }

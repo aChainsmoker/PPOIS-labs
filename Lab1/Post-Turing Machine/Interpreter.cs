@@ -27,14 +27,12 @@
                 else
                     tapeData.Add(false);
             }
-
             return tapeData;
         }
 
 
         public List<string[]> InterpretTheBehaviour(List<string?> behaviour)
         {
-
             List<string[]> behaviourData = new List<string[]>();
             string[] behaviourCommandsPerLine;
 
@@ -44,7 +42,6 @@
 
                 behaviourData.Add(behaviourCommandsPerLine);
             }
-
             return behaviourData;
         }
 
@@ -68,9 +65,7 @@
                     stringTape[i] += behaviour[i][j];
                     stringTape[i] += " ";
                 }
-
             return stringTape;
         }
-
     }
 }

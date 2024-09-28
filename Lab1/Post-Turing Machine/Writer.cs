@@ -2,7 +2,6 @@
 {
     public class Writer
     {
-
         private StreamWriter streamWriter;
 
         public void WriteTheTape(string path, string tape, int pointerPosition, string[] behaviour)

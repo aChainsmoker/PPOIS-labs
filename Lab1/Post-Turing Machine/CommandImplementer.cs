@@ -1,6 +1,5 @@
 ﻿namespace PostMachineNS
 {
-
     public class CommandImplementer
     {
         private Post_Machine machine;
@@ -17,8 +16,6 @@
             this.machine = machine;
             editor = new Editor(machine);
         }
-
-
 
         public string ImplementCommand(string? command)
         {
@@ -69,7 +66,7 @@
                         machine.SwitchTheExecutionMode();
                         break;
                     case "help":
-                        DisplayHelpDocument("D:\\Документы\\Всякие университетские файлы\\ППОИС лабы\\Post-Turing Machine\\Post-Turing Machine\\bin\\Debug\\net6.0\\help.txt");
+                        DisplayHelpDocument("help.txt");
                         return commandParts[0];
                     case "next":
                         break;
@@ -99,7 +96,7 @@
 
             List<string> helpLines = reader.ReadTheHelpDocument(pathToFile);
 
-            for(int i = 0; i<helpLines.Count; i++)
+            for (int i = 0; i < helpLines.Count; i++)
             {
                 Console.WriteLine(helpLines[i]);
             }
@@ -107,17 +104,13 @@
 
         private void ShowTheData()
         {
-            if(Console.IsOutputRedirected == false)
+            if (Console.IsOutputRedirected == false)
                 Console.Clear();
 
-            int pointerPosrition = ShowThePointerPosition(); 
+            int pointerPosrition = ShowThePointerPosition();
 
             ShowTheTapeState(pointerPosrition);
             ShowTheBehaviourState();
-            
-
-            
-
         }
 
         private int ShowThePointerPosition()

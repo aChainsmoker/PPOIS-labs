@@ -19,7 +19,6 @@
 
                 commandImplementer.ImplementCommand(Console.ReadLine());
             }
-
         }
 
         public void TakeTheInputInStepByStepMode(int lineToExecute)
@@ -36,7 +35,6 @@
 
                 command = commandImplementer.ImplementCommand(Console.ReadLine());
             }
-
         }
 
         public string TerminateCurrentProcess(int lastExecutedLine, int errorIndex)
@@ -59,7 +57,5 @@
 
             return errorLog;
         }
-
-
     }
 }

@@ -2,7 +2,6 @@
 {
     public class Post_Machine
     {
-
         public List<bool> tape { get; private set; }
         public int currentPosition { get; private set; }
         public List<string[]> behaviour { get; private set; }
@@ -52,13 +51,10 @@
             stepByStepExecutionMode = !stepByStepExecutionMode;
         }
 
-
         public void ExecuteTheProgram(bool executionMode)
         {
-
             stepByStepExecutionMode = executionMode;
             isMachineWorking = true;
-
 
             for (int i = 0; i < behaviour.Count; i++)
             {
@@ -105,11 +101,9 @@
 
                 lineExecuted?.Invoke();
             }
-
             userInterface.TerminateCurrentProcess(lastExecutedLine, 3);
             return;
         }
-
 
         public int MakeTapeWiderIfNeeded(int indexToCheck)
         {
@@ -134,7 +128,6 @@
             }
         }
 
-
         public void MarkTheCell()
         {
             tape[currentPosition] = true;
@@ -154,8 +147,7 @@
             currentPosition = MakeTapeWiderIfNeeded(currentPosition);
         }
 
-
-        public void FixTheSequence() //доделать //👍
+        public void FixTheSequence()
         {
             for (int i = 0; i < behaviour.Count - 1; i++)
             {
@@ -168,7 +160,6 @@
                         behaviour[i] = behaviour[j];
                         behaviour[j] = buff;
                     }
-
                 }
             }
         }
