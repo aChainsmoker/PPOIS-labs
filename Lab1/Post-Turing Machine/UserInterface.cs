@@ -9,6 +9,11 @@
             this.commandImplementer = commandImplementer;
         }
 
+        public void AskForFilePath()
+        {
+            Console.WriteLine("Enter The File Path");
+        }
+
         public void TakeTheInput()
         {
             while (true)

@@ -1,4 +1,6 @@
-﻿using PostMachineNS;
+﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
+using PostMachineNS;
+using System.Reflection.PortableExecutable;
 
 namespace Post_Turing_Machine_Testing
 {
@@ -48,6 +50,10 @@ namespace Post_Turing_Machine_Testing
             string[] newRule = new string[] { "5", "v", "6" };
             editor.EditRules(newRule);
             CollectionAssert.Contains(machine.behaviour, newRule);
+
+            newRule = new string[] { "10", "v", "11" };
+            editor.EditRules(newRule);
+            CollectionAssert.DoesNotContain(machine.behaviour, newRule);
 
 
             newRule = new string[] { "8", "x", "9" };
@@ -114,13 +120,15 @@ namespace Post_Turing_Machine_Testing
         public void HelpDocumentDisplayingTest()
         {
             StringWriter stringWriter = new StringWriter();
+            Reader reader = new Reader();
             Console.SetOut(stringWriter);
 
-            Assert.AreEqual("help", commandImplementer.ImplementCommand("help"));
+            Assert.AreEqual("help", commandImplementer.ImplementCommand("help ..\\..\\..\\help.txt"));
 
             string expectedOutput = "exit - выход";
 
             StringAssert.Contains(stringWriter.ToString(), expectedOutput);
+            CollectionAssert.Contains(reader.ReadTheHelpDocument("..\\..\\..\\help.txt"), expectedOutput);
         }
 
         [TestMethod]
@@ -142,6 +150,9 @@ namespace Post_Turing_Machine_Testing
         [TestMethod]
         public void CommnandImplementationTest()
         {
+            StringWriter stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
             Assert.AreEqual("exe", commandImplementer.ImplementCommand("exe false"));
             Assert.AreEqual("mark", commandImplementer.ImplementCommand("mark"));
             Assert.AreEqual("erase", commandImplementer.ImplementCommand("erase"));
@@ -150,14 +161,45 @@ namespace Post_Turing_Machine_Testing
             Assert.AreEqual("length", commandImplementer.ImplementCommand("length 9"));
             Assert.AreEqual("delete", commandImplementer.ImplementCommand("delete 7"));
             Assert.AreEqual("add", commandImplementer.ImplementCommand("add 7 !"));
+            Assert.AreEqual("edit", commandImplementer.ImplementCommand("edit 1 x 2"));
+            Assert.AreEqual("next", commandImplementer.ImplementCommand("next"));
+            Assert.AreEqual("exit", commandImplementer.ImplementCommand("exit"));
+            Assert.AreEqual("lol", commandImplementer.ImplementCommand("lol"));
+
+            string expectedOutput = "Command does not exist!";
+            StringAssert.Contains(stringWriter.ToString(), expectedOutput);
         }
 
         [TestMethod]
         public void TapeExpansionTest()
         {
+            
+            StringWriter stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
             commandImplementer.ImplementCommand("length 12");
             commandImplementer.ImplementCommand("log");
-        }  
+
+            string expectedOutput = "0 0 0 0 0 0 0 1 0 0 0 0 0";
+
+            StringAssert.Contains(stringWriter.ToString(), expectedOutput);
+        }
+
+        [TestMethod]
+        public void AskingForFileTest()
+        {
+            Reader reader = new Reader();
+            StringWriter stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+
+            reader.AskForFilePath(new UserInterface(new CommandImplementer(new Post_Machine())));
+
+            string expectedOutput = "Enter The File Path";
+
+            StringAssert.Contains(stringWriter.ToString(), expectedOutput);
+        }
+        
     }
 }
 

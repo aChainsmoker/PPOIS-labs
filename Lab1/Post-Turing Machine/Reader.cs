@@ -9,6 +9,11 @@
         public List<string?> behaviourData = new List<string?>();
         public int pointerPlace = 0;
 
+        public void AskForFilePath(UserInterface userInterface)
+        {
+            userInterface.AskForFilePath();
+        }
+
         public List<string> ReadTheHelpDocument(string pathToFile)
         {
             List<string> lines = new List<string>();
@@ -28,16 +33,7 @@
         {
             StreamReader streamReader;
 
-            try
-            {
-                streamReader = new StreamReader(pathToFile);
-            }
-            catch
-            {
-                Console.WriteLine("No File!");
-                Console.WriteLine("You're in" + Directory.GetCurrentDirectory());
-                return;
-            }
+            streamReader = new StreamReader(pathToFile);
 
             if (streamReader.Peek() > -1)
             {

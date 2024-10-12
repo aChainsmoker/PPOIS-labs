@@ -66,7 +66,7 @@
                         machine.SwitchTheExecutionMode();
                         break;
                     case "help":
-                        DisplayHelpDocument("help.txt");
+                        DisplayHelpDocument(commandParts[1]);
                         return commandParts[0];
                     case "next":
                         break;
