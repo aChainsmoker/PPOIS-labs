@@ -85,6 +85,7 @@
 
         public void EnterTheLoginData()
         {
+            Console.WriteLine("Login Or Register");
             while (true)
                 if (HandleInput(Console.ReadLine())) break;
         }
