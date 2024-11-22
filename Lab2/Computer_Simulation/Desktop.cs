@@ -59,7 +59,7 @@ namespace Computer_Simulation
                 }
             }
         }
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             ConsoleKey key;
             if (Console.IsOutputRedirected == false)

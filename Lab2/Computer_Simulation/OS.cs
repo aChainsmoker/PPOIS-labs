@@ -11,11 +11,12 @@ namespace Computer_Simulation
         private string fileSystemPath;
         private ProfileSelector profileSelector;
         private FileExplorer fileExplorer;
-        private Desktop dekstop; 
+        private Desktop desktop; 
         private AppStore store;
         private List<Application> installedApplications;
 
         public List<Application> InstalledApps {  get => installedApplications; set => installedApplications = value; }
+        public Desktop Desktop { get => desktop; }
         public Action loadProfilesApps;
         public string FileSystemPath 
         {
@@ -36,20 +37,23 @@ namespace Computer_Simulation
         {
             profileSelector = new ProfileSelector(this);
             fileExplorer = new FileExplorer(this);
-            dekstop = new Desktop(this);
+            desktop = new Desktop(this);
             store = new AppStore(this);
 
             loadProfilesApps += store.LoadProfilesApps;
-            loadProfilesApps += dekstop.CheckOnWallpapersApp;
-            loadProfilesApps += dekstop.SetProfileActivation;
+            loadProfilesApps += desktop.CheckOnWallpapersApp;
+            loadProfilesApps += desktop.SetProfileActivation;
 
             installedApplications = new List<Application>();
             installedApplications.Add(profileSelector);
             installedApplications.Add(fileExplorer);
             installedApplications.Add(store);
 
-            dekstop.LaunchApp();
-            dekstop.TakeTheInput();
+            if (!Console.IsOutputRedirected)
+            {
+                desktop.LaunchApp();
+                desktop.TakeTheInput();
+            }
         }
     }
 }

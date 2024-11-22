@@ -34,7 +34,7 @@ namespace Computer_Simulation
             appStateUpdated += UpdateAppRepresentation;
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             string[] commandParts = command.Split();
 

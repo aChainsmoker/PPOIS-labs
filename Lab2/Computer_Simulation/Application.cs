@@ -39,7 +39,7 @@ namespace Computer_Simulation
             if (Console.IsOutputRedirected == false)
                 Console.Clear();
         }
-        protected abstract string HandleInput(string command);
+        public abstract string HandleInput(string command);
         public abstract void LaunchApp();
         public abstract void CloseApp();
         public abstract string AppName { get; set; }

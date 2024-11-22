@@ -34,7 +34,7 @@ namespace Computer_Simulation
             appStateUpdated -= UpdateAppRepresentation;
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             while (updateMode == true)
             {
@@ -56,9 +56,6 @@ namespace Computer_Simulation
                         break;
                     case 3:
                         timeData = timer.GetRemainingTime().ToString();
-                        break;
-                    default:
-                        updateMode = false;
                         break;
                 }
 
@@ -84,6 +81,7 @@ namespace Computer_Simulation
                     {
                         stopwatch.Stop();
                         stopwatch.Reset();
+                        timeData = stopwatch.ToString();
                     }
                     break;
                 case "timer":
@@ -95,7 +93,11 @@ namespace Computer_Simulation
                         SetToUpdateMode();
                     }
                     else if (commandParts[1] == "stop")
+                    {
                         timer.StopTimer();
+                        timeData = timer.GetRemainingTime().ToString();
+                    }
+
                     break;
             }
 
@@ -105,7 +107,7 @@ namespace Computer_Simulation
         private void SetToUpdateMode()
         {
             updateMode = true;
-            HandleInput("");
+            HandleInput(String.Empty);
         }
 
         protected override void UpdateAppRepresentation()

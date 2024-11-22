@@ -46,7 +46,7 @@ namespace Computer_Simulation
             stateWriter.WriteState(stringData, "Snakey.txt");
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             switch (command.Trim())
             {

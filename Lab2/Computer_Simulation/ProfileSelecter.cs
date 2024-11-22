@@ -91,7 +91,7 @@ namespace Computer_Simulation
             WriteData();
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             string[] commandParts = command.Split();
 

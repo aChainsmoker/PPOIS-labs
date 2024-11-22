@@ -11,6 +11,7 @@ namespace Computer_Simulation
         private System.Timers.Timer timer;
         private DateTime endTime;
         private double durationInSeconds;
+        private TimeSpan remainedTime; 
 
         public CustomTimer(double durationInSeconds)
         {
@@ -26,12 +27,16 @@ namespace Computer_Simulation
 
         public void StopTimer()
         {
+            if (timer.Enabled)
+                remainedTime = endTime - DateTime.Now;
             timer.Stop();
         }
 
         public TimeSpan GetRemainingTime()
         {
             TimeSpan remainingTime = endTime - DateTime.Now;
+            if (timer.Enabled == false)
+                remainingTime = remainedTime;
             return remainingTime < TimeSpan.Zero ? TimeSpan.Zero : remainingTime;
         }
 

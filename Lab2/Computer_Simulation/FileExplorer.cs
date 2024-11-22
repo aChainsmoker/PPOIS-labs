@@ -35,7 +35,7 @@ namespace Computer_Simulation
             isFileEditorInstalled = CheckOnFileEditor();
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             FileStream fs;
             string[] commandParts = command.Split();

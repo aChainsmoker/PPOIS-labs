@@ -12,7 +12,6 @@ namespace Computer_Simulation
         private string name = "Wallpapers";
         private int wallpaperIndex;
         private List<string> wallpapers = new List<string>();
-        List<string> stringData;
 
         private const int WallpapersSize = 30;
 
@@ -31,11 +30,12 @@ namespace Computer_Simulation
             appStateUpdated -= UpdateAppRepresentation;
         }
 
-        protected override string HandleInput(string command)
+        public override string HandleInput(string command)
         {
             switch (command.Trim())
             {
                 case "next":
+                    List<string> stringData = stateReader.ReadData("Wallpapers.txt");
                     if (wallpaperIndex != (stringData.Count - 1) / 30)
                     {
                         wallpaperIndex++;
@@ -57,7 +57,7 @@ namespace Computer_Simulation
 
         public void ReadData()
         {
-            stringData = stateReader.ReadData("Wallpapers.txt");
+            List<string >stringData = stateReader.ReadData("Wallpapers.txt");
 
             if(stringData.Count == 0)
             {
@@ -72,6 +72,8 @@ namespace Computer_Simulation
 
         public void SetWallpapers()
         {
+            List<string> stringData = stateReader.ReadData("Wallpapers.txt");
+
             wallpapers.Clear();
 
             int wallpapersLinesStart = 1;
@@ -86,6 +88,8 @@ namespace Computer_Simulation
 
         public void WriteData()
         {
+            List<string> stringData = stateReader.ReadData("Wallpapers.txt");
+
             stringData[0] = wallpaperIndex.ToString();
 
             stateWriter.WriteState(stringData, "Wallpapers.txt");
