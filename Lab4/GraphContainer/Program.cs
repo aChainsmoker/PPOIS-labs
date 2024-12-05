@@ -6,7 +6,6 @@ namespace GraphContainer
     {
         static void Main(string[] args)
         {
-            
         }
     }
 }

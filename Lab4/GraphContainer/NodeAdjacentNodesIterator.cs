@@ -15,7 +15,7 @@ namespace GraphContainer
         private bool reverse;
         private bool constModifier;
 
-        public WirthNode<T> Current { get => current; set { if (constModifier) return; else current = value; } }
+        public WirthNode<T> Current { get => current; set { if (constModifier) throw new Exception("You cannot modify constant iterator"); else current = value; } }
 
         public NodeAdjacentNodesIterator(Graph<T>graph, WirthNode<T> mainNode, bool reverse, bool constModifier)
         {

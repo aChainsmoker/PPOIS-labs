@@ -17,7 +17,7 @@ namespace GraphContainer
         private bool reverse;
         private bool constModifier;
 
-        public WirthEdge<T> Current { get => current; set { if (constModifier) return; else current = value; } }
+        public WirthEdge<T> Current { get => current; set { if (constModifier) throw new Exception("You cannot modify constant iterator"); else current = value; } }
 
         public GraphEdgeIterator(Graph<T> graph, WirthNode<T> headNode,WirthNode<T> tailNode, bool reverse, bool constModifier)
         {
